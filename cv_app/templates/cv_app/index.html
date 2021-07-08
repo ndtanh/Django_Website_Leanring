@@ -1,0 +1,270 @@
+{% extends "cv_app/layout.html" %}
+
+{% block title %}My CV{% endblock %}
+
+{% block menu_mobile %}
+    <div class="rzm_mobile_header col-sm-12 col-xs-12 hidden-lg hidden-md">
+        <div class="mob_nav  navbar navbar-inverse navbar-fixed-top" id="slide-nav">
+            <div class="navbar-header">
+                <a class="navbar-toggle"></a>
+            </div>
+            <div id="slidemenu" class="navbar-default navbar-inverse">
+                <ul class="nav navbar-nav primary">
+                    <li class="first"><a href="#about">About </a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#experiences">Experiences</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#certifications">Certifications</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="" target="_blank">Download CV</a></li>
+                    <li><a href="#home" class="go_to_top">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block navbar %}
+    <div class="rzm_main_menu hidden-sm hidden-xs">
+        <ul class="primary">
+            <li class="first"><a href="#about">About </a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experiences">Experiences</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="" target="_blank">Download CV</a></li>
+            <li><a href="#home" class="go_to_top">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></a></li>
+        </ul>
+        <div class="social_nav">
+            <a target="_blank" href="https://github.com/ndtanh"><i class="fa fa-github" aria-hidden="true"></i></a>
+            <a target="_blank" href="https://www.facebook.com/tuananh23041999/"><i class="fa fa-facebook"
+                                                                                   aria-hidden="true"></i></a>
+            <a target="_blank" href="https://www.instagram.com/anh_2304/"><i class="fa fa-instagram"
+                                                                             aria-hidden="true"></i></a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block profile %}
+    <section id="about" class="col-md-9 col-sm-12 col-xs-12 col-md-offset-3 first profile rez_about">
+        <div class="rez_top_title">
+            <h1>
+                {{ base_infor.full_name }}
+                <br>
+                [{{ base_infor.apply_to }}]
+            </h1>
+        </div>
+        <div style="margin-top: 3vw" class="about_info">
+            <p>Full Name: {{ base_infor.full_name }}</p>
+            <p>Address: {{ base_infor.address }}</p>
+            <p>Gender: {{ base_infor.gender }}</p>
+            <p>Phone: {{ base_infor.phone }}</p>
+            <p>Email: {{ base_infor.email }}</p>
+        </div>
+        {% if  base_infor.about %}
+            <h1 class="title">Summary</h1>
+            <!-- Start About section -->
+            <div class="col-md-12 col-sm-12 col-xs-12  omega  about">
+                <p class="about_info">
+                    {{ base_infor.about }}
+                </p>
+            </div>
+        {% endif %}
+        {% if  base_infor.career_objectives %}
+            <h1 class="title">Career Objective</h1>
+            <!-- Start About section -->
+            <div class="col-md-12 col-sm-12 col-xs-12  omega  about">
+                <p class="about_info">
+                    {{ base_infor.career_objectives }}
+                </p>
+            </div>
+        {% endif %}
+
+    </section>
+{% endblock %}
+
+{% block skills %}
+    {% if lst_skills %}
+        <section id='skills' class="col-md-9 col-sm-12 col-xs-12 col-md-offset-3">
+            <h1 class="title">Skills</h1>
+            {% for item in lst_skills %}
+                <pre><strong>{{ item.skill_name }} </strong> {{ item.content }}</pre>
+            {% endfor %}
+        </section>
+    {% endif %}
+{% endblock %}
+
+{% block experiences %}
+    {% if lst_experiences %}
+        <section id='experiences' class="col-md-9 col-sm-12 col-xs-12 col-md-offset-3 rzm_experience" id="experience">
+            <h1 class="title">Experiences</h1>
+            {% for item in lst_experiences %}
+                <div id="rzm_timeline">
+                    <div class="row rzm_timeline-movement">
+                        <div class="rzm_timeline-badge active_box">
+                        </div>
+                        <div class="col-sm-6 col-xs-12 rzm_timeline-item">
+                            <div class="row">
+                                <div class="col-sm-11 col-xs-12">
+                                    <div class="rzm_timeline-panel credits">
+                                        <ul class="rzm_timeline-panel-ul">
+                                            <li>{{ item.time_start }} - {{ item.time_end }} </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xs-12  rzm_timeline-item">
+                            <div class="row">
+                                <div class="col-sm-offset-1 col-sm-11 col-xs-12">
+                                    <div class="rzm_timeline-panel debits">
+                                        <ul class="rzm_timeline-panel-ul active">
+                                            <li><span class="rzm_importo">{{ item.company_name }}</span>
+                                            </li>
+                                            <li><span class="rzm_causale">Position: {{ item.position }} </span></li>
+                                            <li><span class="rzm_causale"> {{ item.GPD }} </span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--due -->
+                </div>
+            {% endfor %}
+        </section>
+    {% endif %}
+{% endblock %}
+
+{% block education %}
+    {% if lst_education %}
+        <section id='education' class="col-md-9 col-sm-12 col-xs-12 col-md-offset-3 rzm_experience" id="experience">
+            <h1 class="title">Education</h1>
+            {% for item in lst_education %}
+                <div id="rzm_timeline">
+                    <div class="row rzm_timeline-movement">
+                        <div class="rzm_timeline-badge active_box">
+                        </div>
+                        <div class="col-sm-6 col-xs-12 rzm_timeline-item">
+                            <div class="row">
+                                <div class="col-sm-11 col-xs-12">
+                                    <div class="rzm_timeline-panel credits">
+                                        <ul class="rzm_timeline-panel-ul">
+                                            <li>{{ item.start_date }} - {{ item.end_date }} </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xs-12  rzm_timeline-item">
+                            <div class="row">
+                                <div class="col-sm-offset-1 col-sm-11 col-xs-12">
+                                    <div class="rzm_timeline-panel debits">
+                                        <ul class="rzm_timeline-panel-ul active">
+                                            <li><span class="rzm_importo">{{ item.school }}</span></li>
+                                            <li><span class="rzm_causale">{{ item.major }} </span></li>
+                                            {% if item.GPD %}
+                                                <li><span class="rzm_causale">GPD: {{ item.GPD }} </span>
+                                                </li>
+                                            {% endif %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--due -->
+                </div>
+            {% endfor %}
+        </section>
+    {% endif %}
+{% endblock %}
+
+{% block certifications %}
+    {% if lst_certifications %}
+        <!-- Start Certification section -->
+        <section id="certifications" class="col-md-9 col-sm-12 col-xs-12 col-md-offset-3 rzm_experience">
+            <h1 class="title">Certifications</h1>
+            <div class="container-fluid">
+                {% for item in lst_certifications %}
+                    <pre>{{ item.time.year }} {{ item.name }}</pre>
+                    <hr>
+                {% endfor %}
+            </div>
+        </section>
+        <!-- End Certification section -->
+
+    {% endif %}
+{% endblock %}
+
+{% block projects %}
+    {% if lst_projects %}
+        <section id="projects" class="col-md-9 col-sm-12 col-xs-12 col-md-offset-3 rzm_portfolio">
+            <h1 class="title">Project</h1>
+            <div class="container-fluid">
+                <table class="table  table-bordered" style="font-family: monospace">
+                    <thead>
+                    <tr>
+                        <th scope="col">Time</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Detail</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in lst_projects %}
+                        <tr>
+                            <td>{{ item.time_start }}</td>
+                            <td>{{ item.name }}</td>
+                            <td style="text-align: center">
+                                <button class="btn btn-primary" data-toggle="modal"
+                                        data-target="#MS_{{ item.id }}">
+                                    Detail
+                                </button>
+                            </td>
+                            <div class="modal" tabindex="-1" id="MS_{{ item.id }}" role="dialog"
+                                 style="font-family: monospace">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">{{ item.name }}</h5>
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-lg-4">
+                                                    <p>
+                                                        <strong>From: </strong> {{ item.time_start }}
+                                                        <br>
+                                                        <strong>To: </strong>{{ item.time_end }}
+                                                    </p>
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <p><strong>Name:</strong> {{ item.name }}</p>
+                                                    <p><strong>Position:</strong> {{ item.position }}</p>
+                                                    <p><strong>Skill:</strong> {{ item.skill }}</p>
+                                                </div>
+                                            </div>
+                                            <p>{{ item.content }}</p>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">
+                                                Close
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    {% endif %}
+{% endblock %}

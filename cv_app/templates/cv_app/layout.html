@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <title>{% block title %} {% endblock %}</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/animate.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/layout.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/responsive.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <!--[if IE 7]>
+        <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/ie7.css' %}">
+        <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+<!-- Primary Page Layout -->
+
+<!-- Start  Mobile & Tab Header-->
+{% block menu_mobile %} {% endblock %}
+<!-- End  Mobile & Tab Header-->
+
+<!-- Start outside-header -->
+<div class="rzm_outside-header" id="home">
+</div>
+<!-- End outside-header -->
+
+<!-- Start Outside Main -->
+<div class="outside-main" id="page-content">
+    <!-- Start Main Container -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-12 rzm_profile_nav">
+                <div class="sticky">
+                    <div class="logo">
+                        <img src="{% static 'img/profile.jpg' %}" alt="profile_photo" class="img-responsive img-circle">
+                    </div>
+                    <!-- Start primary navigation -->
+                    {% block navbar %} {% endblock %}
+                    <!-- End Primary navigation -->
+                </div>
+            </div>
+            <div class="clearfix"></div>
+
+            <!-- Start Profile Section -->
+            {% block profile %} {% endblock %}
+            <!-- End Profile section -->
+
+            <!-- Start Skills Section -->
+            {% block skills %} {% endblock %}
+            <!-- End Skills section -->
+
+            <!-- Start Experiences section -->
+            {% block experiences %} {% endblock %}
+            <!-- End Experiences section -->
+
+            <!-- Start Education section -->
+            {% block education %} {% endblock %}
+            <!-- End Education section -->
+
+            <!-- Start Certifications section -->
+            {% block certifications %} {% endblock %}
+            <!-- End Certifications Section-->
+
+            <!-- Start Projects section -->
+            {% block projects %} {% endblock %}
+            <!-- End Projects Section -->
+        </div>
+    </div>
+</div>
+<!-- End Main Container-->
+</div>
+<!-- End Outside Main-->
+
+<!-- Start footer section -->
+<section class="col-md-12 col-sm-12 col-xs-12 rzm_footer container-fluid">
+    <div class="container">
+        <h4>Find Me on</h4>
+        <div class="rez_footer_social">
+            <a target="_blank" href="https://github.com/1760005"><i class="fa fa-github" aria-hidden="true"></i></a>
+            <a target="_blank" href="https://www.facebook.com/tuananh23041999/"><i class="fa fa-facebook"
+                                                                                   aria-hidden="true"></i></a>
+            <a target="_blank" href="https://www.instagram.com/anh_2304/"><i class="fa fa-instagram"
+                                                                             aria-hidden="true"></i></a>
+        </div>
+        <p>©Nguyễn Đoàn Tuấn Anh.</p>
+    </div>
+</section>
+<!-- End footer section -->
+<!-- JS -->
+<script src="{% static 'javascripts/jquery.tipsy.js' %}"></script>
+<script src="{% static  'javascripts/jquery.scrollTo-min.js' %}"></script>
+<script src="{% static 'javascripts/jquery.localscroll-min.js' %}"></script>
+<script src="{% static 'javascripts/jquery.easing.1.3.js' %}"></script>
+<script src="{% static 'javascripts/script.js' %} "></script>
+</body>
+</html>
